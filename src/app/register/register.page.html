@@ -6,6 +6,50 @@
 
 <ion-content>
 
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="stacked">Nombre</ion-label>
+					<ion-input type="text" #user.nombre name="nombre"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item>
+					<ion-label position="stacked">Apellido Paterno</ion-label>
+					<ion-input type="text" #user.apellidoPaterno name="apellidoPaterno"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="stacked">Apellido Materno</ion-label>
+					<ion-input type="text" #user.apellidoMaterno name="apellidoMaterno"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item>
+					<ion-label position="stacked">Correo</ion-label>
+					<ion-input type="email" #user.email name="email"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="stacked">Contraseña</ion-label>
+					<ion-input type="password" #user.password name="password"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
 
 <ion-footer class="ion-text-center">

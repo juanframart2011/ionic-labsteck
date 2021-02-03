@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from '../interface/country';
 import { State } from '../interface/state';
+import { User } from '../interface/user';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { UserService } from '../service/user.service';
 })
 export class RegisterPage implements OnInit {
 
+  user:User;
   countrys:Country[] = [];
   states:State[] = [];
 

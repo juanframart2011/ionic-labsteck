@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://198.199.105.120:8090/api/V1/service-cmp-access/'
+  url: 'http://198.199.105.120:8090/api/V1/'
 };
 
 /*

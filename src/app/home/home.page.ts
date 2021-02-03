@@ -9,7 +9,10 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  user:UserLogin = {};
+  user:UserLogin = {
+    email: null,
+    password: ""
+  };
   constructor(public alert: AlertController) {}
 
   async _message( text:string ) {

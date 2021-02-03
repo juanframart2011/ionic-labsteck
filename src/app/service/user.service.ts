@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { User } from '../interface/user';
 
 const apiUrl = environment.url;
 
@@ -13,11 +14,16 @@ export class UserService {
 
 	getCountry():any{
 
-		return this.http.get( apiUrl+'country/list' );
+		return this.http.get( apiUrl+'service-cmp-access/country/list' );
 	}
 
 	getState( country:string ):any{
 
-		return this.http.get( apiUrl+'region/list?country_name=' + country );
+		return this.http.get( apiUrl+'service-cmp-access/region/list?country_name=' + country );
+	}
+
+	save( user:User ){
+		
+		return this.http.post( apiUrl+'service-cmp-access/signin', user );
 	}
 }
