@@ -1,20 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <form (submit)="login()">
+      <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
+      <ion-button ion-button type="submit" block>Entrar</ion-button>
+	</form>
+	<br>
+
+	<a routerLink="/register"><ion-button>REGISTRARSE</ion-button></a>
   </div>
 </ion-content>
+
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+    <ion-title>"Todos los doctores están en <span class="green">Dr Clinic</span>"</ion-title>
+    <ion-button>INFORMACIÓN</ion-button>
+  </ion-toolbar>
+</ion-footer>

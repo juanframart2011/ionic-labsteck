@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'http://198.199.105.120:8090/api/V1/service-cmp-access/'
 };
 
 /*
