@@ -3,6 +3,7 @@ import { Country } from '../interface/country';
 import { State } from '../interface/state';
 import { User } from '../interface/user';
 import { UserService } from '../service/user.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,18 @@ export class RegisterPage implements OnInit {
   countrys:Country[] = [];
   states:State[] = [];
 
-  constructor( private userService:UserService ) {}
+  constructor( private userService:UserService, public alert: AlertController ) {}
+
+  async _message( title:string, text:string ) {
+    const alert = await this.alert.create({
+      cssClass: 'my-custom-class',
+      header: title,
+      message: text,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
   ngOnInit() {
 
@@ -46,8 +58,6 @@ export class RegisterPage implements OnInit {
     this.user.enable = false;
     this.user.createdBy = "manuel.perez@labsteck.com";
     this.user.updatedBy = "manuel.perez@labsteck.com";
-    console.log( this.countryCurrent );
-    console.log( this.regionCurrent );
 
     let ubicacion = {
       x: 46.5,
@@ -67,26 +77,25 @@ export class RegisterPage implements OnInit {
       cp:             "2242"
     }
 
-    /*country?:        Country;
-    region?:         State;
-    ciudad?:         string;
-    direccion?:      string;
-    numeroExterior?: string;
-    numeroInterior?: string;
-    colonia?:        string;
-    telefono?:       string;
-    ubicacion?:      Ubicacion;
-    cp?:             string;
-
-    this.user.address.country = this.countrys[this.countryCurrent];
-    this.user.address.region = this.states[this.regionCurrent];*/
-    /*
-    this.user.address.ubicacion.x = 46.5;
-    this.user.address.ubicacion.y = 46.5;
-    this.user.address.cp = "2242";*/
-
     this.user.address = address;
 
-    console.log( "user register() => ", this.user );
+    this.userService.save( this.user ).subscribe(
+      res => {
+        if( res.key ){
+          this._message( "Felicidades", "se creo el registor con éxito");
+        }
+      },
+      err => {
+        console.log('HTTP Error Lang', err)
+        let msg = "";
+
+        for (let index = 0; index < err.error.error.length; index++) {
+          msg += err.error.error[index] + "<br>";
+        }
+
+        this._message( err.error.message, msg);
+    },
+      () => console.log('HTTP request completed.')
+    );
   }
 }
