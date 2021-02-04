@@ -81,7 +81,7 @@ export class RegisterPage implements OnInit {
 
     this.userService.save( this.user ).subscribe(
       res => {
-        if( res.key ){
+        if( res ){
           this._message( "Felicidades", "se creo el registor con éxito");
         }
       },
