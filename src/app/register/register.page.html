@@ -1,66 +1,114 @@
 <ion-header class="ion-text-center">
   <ion-toolbar>
+	<ion-buttons slot="start">
+		<ion-back-button defaultHref="/home" color="white"></ion-back-button>
+	</ion-buttons>
     <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Nombre</ion-label>
-					<ion-input type="text" #user.nombre name="nombre"></ion-input>
-				</ion-item>
-			</ion-col>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Apellido Paterno</ion-label>
-					<ion-input type="text" #user.apellidoPaterno name="apellidoPaterno"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+	<form (submit)="register()">
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Nombre</ion-label>
+						<ion-input type="text" [(ngModel)]="user.nombre" name="nombre" required></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Apellido Paterno</ion-label>
+						<ion-input type="text" [(ngModel)]="user.apellidoPaterno" name="apellidoPaterno" required></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Apellido Materno</ion-label>
-					<ion-input type="text" #user.apellidoMaterno name="apellidoMaterno"></ion-input>
-				</ion-item>
-			</ion-col>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Correo</ion-label>
-					<ion-input type="email" #user.email name="email"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Apellido Materno</ion-label>
+						<ion-input type="text" [(ngModel)]="user.apellidoMaterno" name="apellidoMaterno" required></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Correo</ion-label>
+						<ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Contraseña</ion-label>
-					<ion-input type="password" #user.password name="password"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Contraseña</ion-label>
+						<ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<ion-item>
-					<ion-label position="stacked">Genero</ion-label>
-					<ion-input type="password" #user.password name="password"></ion-input>
-				</ion-item>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Fecha de Nacimiento</ion-label>
+						<ion-input type="date" [(ngModel)]="user.fechaNacimiento" name="fechaNacimiento" required></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Genero</ion-label>
+						<ion-select [(ngModel)]="user.sexo" name="sexo" placeholder="Selecciona genero">
+							<ion-select-option value="M">Masculino</ion-select-option>
+							<ion-select-option value="F">Femenino</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Pais</ion-label>
+						<ion-select [(ngModel)]="countryCurrent" name="country" placeholder="Selecciona Estado" required>
+							<ion-select-option *ngFor="let country of countrys;let c = index;" value="{{ c }}">{{ country.digit3Code }}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label position="stacked">Estados de México</ion-label>
+						<ion-select [(ngModel)]="regionCurrent" name="state" placeholder="Selecciona Estado" required>
+							<ion-select-option *ngFor="let state of states;let s = index;" value="{{ s }}">{{ state.name }}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col class="ion-text-center">
+					<ion-button type="submit">REGISTRAR</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
 </ion-content>
 
 <ion-footer class="ion-text-center">
