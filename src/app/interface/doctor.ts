@@ -1,18 +1,4 @@
 export interface Doctor {
-    content:          Content[];
-    pageable:         Pageable;
-    last:             boolean;
-    totalPages:       number;
-    totalElements:    number;
-    size:             number;
-    number:           number;
-    sort:             Sort;
-    first:            boolean;
-    numberOfElements: number;
-    empty:            boolean;
-}
-
-export interface Content {
     key:                     string;
     usuario:                 Usuario;
     especialidad:            string;
@@ -22,8 +8,8 @@ export interface Content {
     universidad:             null;
     createdAt:               Date;
     updatedAt:               Date;
-    createdBy:               AtedBy;
-    updatedBy:               AtedBy;
+    createdBy:               string;
+    updatedBy:               string;
     hasZoom:                 boolean;
     enable:                  boolean;
 }
@@ -38,20 +24,16 @@ export interface Consultorio {
 
 export interface Address {
     key:            string;
-    country:        Country;
+    country:        string;
     region:         string;
     ciudad:         string;
     direccion:      string;
-    numeroExterior: null | string;
+    numeroExterior: string;
     numeroInterior: string;
     colonia:        string;
     telefono:       string;
-    ubicacion:      Ubicacion | null;
+    ubicacion:      Ubicacion;
     cp:             string;
-}
-
-export enum Country {
-    MX = "MX",
 }
 
 export interface Ubicacion {
@@ -59,24 +41,19 @@ export interface Ubicacion {
     y: number;
 }
 
-export enum AtedBy {
-    Jh6879530GmailCOM = "jh6879530@gmail.com",
-    ManuelPerezLabsteckCOM = "manuel.perez@labsteck.com",
-}
-
 export interface Secretaria {
     key:       string;
     usuario:   Usuario;
     createdAt: Date;
     updatedAt: Date;
-    createdBy: AtedBy;
-    updatedBy: AtedBy;
+    createdBy: string;
+    updatedBy: string;
     enable:    boolean;
 }
 
 export interface Usuario {
     key:             string;
-    sexo:            Sexo;
+    sexo:            string;
     nombre:          string;
     apellidoPaterno: string;
     apellidoMaterno: string;
@@ -86,28 +63,8 @@ export interface Usuario {
     email:           string;
     createdAt:       Date;
     updatedAt:       Date;
-    createdBy:       AtedBy | null;
-    updatedBy:       AtedBy | null;
+    createdBy:       string;
+    updatedBy:       string;
     curp:            string;
-    nss:             null | string;
-}
-
-export enum Sexo {
-    F = "F",
-    M = "M",
-}
-
-export interface Pageable {
-    sort:       Sort;
-    offset:     number;
-    pageNumber: number;
-    pageSize:   number;
-    paged:      boolean;
-    unpaged:    boolean;
-}
-
-export interface Sort {
-    sorted:   boolean;
-    unsorted: boolean;
-    empty:    boolean;
+    nss:             string;
 }

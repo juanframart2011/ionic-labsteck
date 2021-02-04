@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   countrys:Country[] = [];
   states:State[] = [];
 
-  constructor( private userService:UserService) { }
+  constructor( private userService:UserService ) { }
 
   ngOnInit() {
 

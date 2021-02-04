@@ -1,9 +1,17 @@
-<ion-header>
+<ion-header class="ion-text-center">
   <ion-toolbar>
-    <ion-title>doctors</ion-title>
+    <ion-title>Doctores</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="doctors.length > 0 && !isLoading">
+  <ion-list-header *ngFor="let doctor of doctors;let d = index">
+	<ion-label>
+		<b>Dr<span *ngIf="doctor.usuario.sexo == 'F'">a</span>.</b> {{ doctor.usuario.nombre + ' ' + doctor.usuario.apellidoPaterno + ' ' + doctor.usuario.apellidoMaterno }}</ion-label>
+	<ion-button fill="outline" (click)="detailDoctor(d)">Ver Detalle</ion-button>
+  </ion-list-header>
+</ion-content>
 
+<ion-content *ngIf="doctors.length == 0 && !isLoading">
+	<h1>No Hay Doctores en este momento</h1>
 </ion-content>
